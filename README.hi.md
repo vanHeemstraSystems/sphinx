@@ -1,8 +1,8 @@
-sphinx
+गूढ़ व्यक्ति
 
 # गूढ़ व्यक्ति
 
-> Slugline
+> स्लगलाइन
 
 -   [प्रलेखन](./DOCUMENTATION.md)
 -   [शब्दकोष](./GLOSSARY.md)
@@ -16,9 +16,9 @@ sphinx
 
 ## 100 - परिचय
 
-See [README.md](./100/README.md)
+देखना[README.md](./100/README.md)
 
-## 200 - Requirements
+## 200 - आवश्यकताएँ
 
 देखना[README.md](./200/README.md)
 
