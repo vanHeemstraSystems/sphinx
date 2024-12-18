@@ -1,11 +1,11 @@
-Repository-Name
+Sphinx
 
-# Repository-Name
+# Sphinx
 
 > Slugline
 
 -   [Dokumentation](./DOCUMENTATION.md)
--   [Glossar](./GLOSSARY.md)
+-   [Glossary](./GLOSSARY.md)
 -   [Bilder](./IMAGES.md)
 -   [Referenzen](./REFERENCES.md)
 -   [Telemetrie](./TELEMETRY.md)
