@@ -1,6 +1,6 @@
-repositorynaam
+sfinx
 
-# Naam van opslagplaats
+# Sfinx
 
 > Slaklijn
 
