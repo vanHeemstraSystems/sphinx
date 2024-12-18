@@ -1,8 +1,8 @@
-esfinge
+sphinx
 
 # Esfinge
 
-> Slugline
+> línea de bala
 
 -   [Documentación](./DOCUMENTATION.md)
 -   [Glosario](./GLOSSARY.md)
