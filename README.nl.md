@@ -1,13 +1,13 @@
 sfinx
 
-# Sfinx
+# Sphinx
 
 > Slaklijn
 
 -   [Documentatie](./DOCUMENTATION.md)
 -   [Glossarium](./GLOSSARY.md)
--   [Afbeeldingen](./IMAGES.md)
--   [Referenties](./REFERENCES.md)
+-   [Images](./IMAGES.md)
+-   [References](./REFERENCES.md)
 -   [Telemetrie](./TELEMETRY.md)
 
 **Samenvatting**
@@ -16,11 +16,11 @@ Tekst
 
 ## 100 - Inleiding
 
-Zien[README.md](./100/README.md)
+See [README.md](./100/README.md)
 
 ## 200 - Vereisten
 
-Zien[README.md](./200/README.md)
+See [README.md](./200/README.md)
 
 ## 300 - Onze applicatie bouwen
 
