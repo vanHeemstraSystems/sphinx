@@ -1,8 +1,8 @@
-儲存庫名稱
+獅身人面像
 
-# 儲存庫名稱
+# 獅身人面像
 
-> Slugline
+> 斯拉格萊恩
 
 -   [文件](./DOCUMENTATION.md)
 -   [詞彙表](./GLOSSARY.md)
@@ -22,7 +22,7 @@
 
 看[README.md](./200/README.md)
 
-## 300 - 建立我們的應用程式
+## 300 - Building Our Application
 
 看[README.md](./300/README.md)
 
