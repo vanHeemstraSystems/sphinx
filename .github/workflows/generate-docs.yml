@@ -34,19 +34,19 @@ jobs:
     
     - name: Configure Doxygen
       run: |
-        cd docs
+        cd nfc-reader-docs/docs
         sed -i 's/GENERATE_LATEX         = NO/GENERATE_LATEX         = YES/' Doxyfile
         sed -i 's/LATEX_OUTPUT           = latex/LATEX_OUTPUT           = pdf/' Doxyfile
         sed -i 's/GENERATE_PDF           = NO/GENERATE_PDF           = YES/' Doxyfile
     
     - name: Generate Documentation
       run: |
-        cd docs
+        cd nfc-reader-docs/docs
         doxygen Doxyfile
     
     - name: Compile LaTeX to PDF
       run: |
-        cd docs/pdf/latex
+        cd nfc-reader-docs/docs/pdf/latex
         make
     
     - name: Create Release
@@ -54,7 +54,7 @@ jobs:
       if: github.event_name == 'workflow_dispatch'
       with:
         files: |
-          docs/pdf/latex/refman.pdf
+          nfc-reader-docs/docs/pdf/latex/refman.pdf
         name: Hardware Documentation Release
         tag_name: docs-v${{ github.sha }}
     
@@ -62,5 +62,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nfc-reader-documentation
-        path: docs/pdf/latex/refman.pdf
+        path: nfc-reader-docs/docs/pdf/latex/refman.pdf
         retention-days: 30
