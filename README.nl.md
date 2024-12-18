@@ -2,7 +2,7 @@ sfinx
 
 # Sfinx
 
-> Slaklijn
+> Slugline
 
 -   [Documentatie](./DOCUMENTATION.md)
 -   [Glossarium](./GLOSSARY.md)
@@ -10,7 +10,7 @@ sfinx
 -   [Referenties](./REFERENCES.md)
 -   [Telemetrie](./TELEMETRY.md)
 
-**Samenvatting**
+**Executive Summary**
 
 Tekst
 
