@@ -1,0 +1,24 @@
+/**
+ * @mainpage NFC Reader Hardware Documentation
+ * 
+ * @section intro_sec Introduction
+ * Comprehensive documentation for NFC Reader hardware interface
+ * 
+ * @section features_sec Key Features
+ * - Multiple connection interfaces (USB, Bluetooth)
+ * - Mac Mini compatibility
+ * - Advanced NFC communication protocols
+ * 
+ * @section arch_sec System Architecture
+ * @dot
+ * digraph SystemArchitecture {
+ *   node [shape=box];
+ *   nfc_reader [label="NFC Reader"];
+ *   mac_mini [label="Mac Mini"];
+ *   user [label="User Interaction"];
+ *   
+ *   nfc_reader -> mac_mini -> user;
+ *   user -> nfc_reader;
+ * }
+ * @enddot
+ */
