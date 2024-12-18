@@ -1,3 +1,4 @@
 # References
 
-- [Reference Name](https://example.com)
+- [Sphinx](https://www.sphinx-doc.org/)
+- [Doxygen](https://www.doxygen.nl/)
