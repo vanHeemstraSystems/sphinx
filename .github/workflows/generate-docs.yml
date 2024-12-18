@@ -10,16 +10,14 @@ on:
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
+    defaults:
+      run: 
+        shell: bash
+        working-directory: ./nfc-reader-docs
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
-    - name: Echo Working Directory
-      run: |
-        pwd
-        ls -la
-        echo ${{ github.workspace }}
 
     - name: Install Dependencies
       run: |
@@ -34,33 +32,25 @@ jobs:
     
     - name: Setup PlantUML
       run: |
-        pwd
-        ls -la
         wget https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-1.2024.3.jar
         sudo mkdir -p /usr/local/bin
         sudo mv plantuml-1.2024.3.jar /usr/local/bin/plantuml.jar
     
     - name: Configure Doxygen
       run: |
-        pwd
-        ls -la
-        cd ${{ github.workspace }}/nfc-reader-docs/docs
+        cd docs
         sed -i 's/GENERATE_LATEX         = NO/GENERATE_LATEX         = YES/' Doxyfile
         sed -i 's/LATEX_OUTPUT           = latex/LATEX_OUTPUT           = pdf/' Doxyfile
         sed -i 's/GENERATE_PDF           = NO/GENERATE_PDF           = YES/' Doxyfile
     
     - name: Generate Documentation
       run: |
-        pwd
-        ls -la
-        cd ${{ github.workspace }}/nfc-reader-docs/docs
+        cd docs
         doxygen Doxyfile
     
     - name: Compile LaTeX to PDF
       run: |
-        pwd
-        ls -la
-        cd ${{ github.workspace }}/nfc-reader-docs/docs/pdf/latex
+        cd docs/pdf/latex
         make
     
     - name: Create Release
@@ -68,7 +58,7 @@ jobs:
       if: github.event_name == 'workflow_dispatch'
       with:
         files: |
-          ${{ github.workspace }}/nfc-reader-docs/docs/pdf/latex/refman.pdf
+          docs/pdf/latex/refman.pdf
         name: Hardware Documentation Release
         tag_name: docs-v${{ github.sha }}
     
@@ -76,5 +66,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nfc-reader-documentation
-        path: ${{ github.workspace }}/nfc-reader-docs/docs/pdf/latex/refman.pdf
+        path: nfc-reader-docs/docs/pdf/latex/refman.pdf
         retention-days: 30
