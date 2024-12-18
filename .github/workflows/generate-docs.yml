@@ -15,6 +15,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     
+    - name: Echo Working Directory
+      run: |
+        pwd
+        ls -la
+        echo ${{ github.workspace }}
+
     - name: Install Dependencies
       run: |
         sudo apt-get update
@@ -30,7 +36,6 @@ jobs:
       run: |
         pwd
         ls -la
-        cd nfc-reader-docs
         wget https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-1.2024.3.jar
         sudo mkdir -p /usr/local/bin
         sudo mv plantuml-1.2024.3.jar /usr/local/bin/plantuml.jar
@@ -39,7 +44,7 @@ jobs:
       run: |
         pwd
         ls -la
-        cd docs
+        cd ${{ github.workspace }}/nfc-reader-docs/docs
         sed -i 's/GENERATE_LATEX         = NO/GENERATE_LATEX         = YES/' Doxyfile
         sed -i 's/LATEX_OUTPUT           = latex/LATEX_OUTPUT           = pdf/' Doxyfile
         sed -i 's/GENERATE_PDF           = NO/GENERATE_PDF           = YES/' Doxyfile
@@ -48,14 +53,14 @@ jobs:
       run: |
         pwd
         ls -la
-        cd docs
+        cd ${{ github.workspace }}/nfc-reader-docs/docs
         doxygen Doxyfile
     
     - name: Compile LaTeX to PDF
       run: |
         pwd
         ls -la
-        cd docs/pdf/latex
+        cd ${{ github.workspace }}/nfc-reader-docs/docs/pdf/latex
         make
     
     - name: Create Release
@@ -63,7 +68,7 @@ jobs:
       if: github.event_name == 'workflow_dispatch'
       with:
         files: |
-          docs/pdf/latex/refman.pdf
+          ${{ github.workspace }}/nfc-reader-docs/docs/pdf/latex/refman.pdf
         name: Hardware Documentation Release
         tag_name: docs-v${{ github.sha }}
     
@@ -71,5 +76,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nfc-reader-documentation
-        path: docs/pdf/latex/refman.pdf
+        path: ${{ github.workspace }}/nfc-reader-docs/docs/pdf/latex/refman.pdf
         retention-days: 30
