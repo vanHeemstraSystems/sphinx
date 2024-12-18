@@ -2,7 +2,7 @@ sfinx
 
 # Sfinx
 
-> Slugline
+> Slaklijn
 
 -   [Documentatie](./DOCUMENTATION.md)
 -   [Glossarium](./GLOSSARY.md)
@@ -14,7 +14,7 @@ sfinx
 
 Tekst
 
-## 100 - Introduction
+## 100 - Inleiding
 
 Zien[README.md](./100/README.md)
 
