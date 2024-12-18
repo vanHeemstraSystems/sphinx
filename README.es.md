@@ -14,7 +14,7 @@ esfinge
 
 Texto
 
-## 100 - Introduction
+## 100 - Introducción
 
 Ver[README.md](./100/README.md)
 
