@@ -1,0 +1,66 @@
+name: NFC Reader Hardware Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          doxygen \
+          graphviz \
+          texlive-full \
+          plantuml \
+          wget \
+          unzip
+    
+    - name: Setup PlantUML
+      run: |
+        wget https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-1.2024.3.jar
+        sudo mkdir -p /usr/local/bin
+        sudo mv plantuml-1.2024.3.jar /usr/local/bin/plantuml.jar
+    
+    - name: Configure Doxygen
+      run: |
+        cd docs
+        sed -i 's/GENERATE_LATEX         = NO/GENERATE_LATEX         = YES/' Doxyfile
+        sed -i 's/LATEX_OUTPUT           = latex/LATEX_OUTPUT           = pdf/' Doxyfile
+        sed -i 's/GENERATE_PDF           = NO/GENERATE_PDF           = YES/' Doxyfile
+    
+    - name: Generate Documentation
+      run: |
+        cd docs
+        doxygen Doxyfile
+    
+    - name: Compile LaTeX to PDF
+      run: |
+        cd docs/pdf/latex
+        make
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      if: github.event_name == 'workflow_dispatch'
+      with:
+        files: |
+          docs/pdf/latex/refman.pdf
+        name: Hardware Documentation Release
+        tag_name: docs-v${{ github.sha }}
+    
+    - name: Upload PDF Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: nfc-reader-documentation
+        path: docs/pdf/latex/refman.pdf
+        retention-days: 30
