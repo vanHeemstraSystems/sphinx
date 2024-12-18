@@ -1,6 +1,6 @@
-sfinx
+sphinx
 
-# Sfinx
+# Sphinx
 
 > Slaklijn
 
