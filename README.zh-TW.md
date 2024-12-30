@@ -4,9 +4,9 @@
 
 > 斯拉格萊恩
 
--   [文件](./DOCUMENTATION.md)
+-   [Documentation](./DOCUMENTATION.md)
 -   [詞彙表](./GLOSSARY.md)
--   [圖片](./IMAGES.md)
+-   [Images](./IMAGES.md)
 -   [參考](./REFERENCES.md)
 -   [遙測](./TELEMETRY.md)
 
@@ -14,15 +14,15 @@
 
 文字
 
-## 100 - 簡介
+## 100 - Introduction
 
 看[README.md](./100/README.md)
 
 ## 200 - 要求
 
-看[README.md](./200/README.md)
+See [README.md](./200/README.md)
 
-## 300 - 建立我們的應用程式
+## 300 - Building Our Application
 
 看[README.md](./300/README.md)
 
