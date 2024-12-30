@@ -31,13 +31,98 @@ jobs:
         wget https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-1.2024.3.jar
         sudo mkdir -p /usr/local/bin
         sudo mv plantuml-1.2024.3.jar /usr/local/bin/plantuml.jar
-    
-    - name: Configure Doxygen
+
+    - name: Create Documentation Directory Structure
+      run: |
+        mkdir -p docs
+        
+    - name: Create Doxyfile
       run: |
         cd docs
-        sed -i 's/GENERATE_LATEX         = NO/GENERATE_LATEX         = YES/' Doxyfile
-        sed -i 's/LATEX_OUTPUT           = latex/LATEX_OUTPUT           = pdf/' Doxyfile
-        sed -i 's/GENERATE_PDF           = NO/GENERATE_PDF           = YES/' Doxyfile
+        cat > Doxyfile << 'EOL'
+        # Doxyfile for NFC Reader Documentation
+
+        PROJECT_NAME           = "NFC Reader Hardware Documentation"
+        PROJECT_NUMBER        = 1.0.0
+        OUTPUT_DIRECTORY      = .
+        CREATE_SUBDIRS        = YES
+        ALLOW_UNICODE_NAMES   = YES
+        OUTPUT_LANGUAGE       = English
+        
+        # Input files
+        INPUT                 = ../include ../src
+        FILE_PATTERNS         = *.h *.cpp *.dox
+        RECURSIVE             = YES
+        
+        # Output formats
+        GENERATE_HTML         = YES
+        GENERATE_LATEX        = YES
+        GENERATE_RTF         = NO
+        GENERATE_MAN         = NO
+        GENERATE_XML         = NO
+        
+        # LaTeX options
+        LATEX_OUTPUT         = pdf
+        COMPACT_LATEX        = NO
+        PAPER_TYPE          = a4
+        EXTRA_PACKAGES      = {graphicx} {longtable}
+        PDF_HYPERLINKS      = YES
+        USE_PDFLATEX        = YES
+        LATEX_BATCHMODE     = YES
+        LATEX_HIDE_INDICES  = NO
+        
+        # Diagrams and graphs
+        HAVE_DOT             = YES
+        DOT_PATH            = /usr/bin/dot
+        PLANTUML_JAR_PATH    = /usr/local/bin/plantuml.jar
+        
+        # Source browsing
+        SOURCE_BROWSER       = YES
+        INLINE_SOURCES      = NO
+        STRIP_CODE_COMMENTS = YES
+        
+        # Index generation
+        ALPHABETICAL_INDEX  = YES
+        GENERATE_TREEVIEW   = YES
+        
+        # Preprocessing
+        ENABLE_PREPROCESSING = YES
+        MACRO_EXPANSION     = YES
+        EXPAND_ONLY_PREDEF  = NO
+        SEARCH_INCLUDES     = YES
+        
+        # Dot tool configuration
+        DOT_NUM_THREADS    = 0
+        DOT_FONTNAME       = Helvetica
+        DOT_FONTSIZE       = 10
+        CLASS_GRAPH        = YES
+        COLLABORATION_GRAPH = YES
+        GROUP_GRAPHS       = YES
+        INCLUDE_GRAPH      = YES
+        INCLUDED_BY_GRAPH  = YES
+        CALL_GRAPH        = NO
+        CALLER_GRAPH      = NO
+        
+        # External references
+        GENERATE_TAGFILE   = 
+        ALLEXTERNALS      = NO
+        EXTERNAL_GROUPS   = YES
+        EXTERNAL_PAGES    = YES
+        
+        # Warning and progress messages
+        QUIET             = NO
+        WARNINGS         = YES
+        WARN_IF_UNDOCUMENTED = YES
+        WARN_IF_DOC_ERROR    = YES
+        WARN_IF_INCOMPLETE_DOC = YES
+        WARN_NO_PARAMDOC     = NO
+        
+        # Other
+        EXTRACT_ALL          = YES
+        EXTRACT_PRIVATE      = YES
+        EXTRACT_STATIC       = YES
+        EXTRACT_LOCAL_CLASSES = YES
+        EOL
     
     - name: Generate Documentation
       run: |
@@ -47,7 +132,6 @@ jobs:
     - name: Fix Makefile Formatting
       run: |
         cd docs/pdf/latex
-        # Ensure Makefile uses tabs
         sed -i 's/^[[:space:]]\+/\t/g' Makefile
     
     - name: Compile LaTeX to PDF
