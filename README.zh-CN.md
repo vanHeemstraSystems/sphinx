@@ -6,8 +6,8 @@
 
 -   [文档](./DOCUMENTATION.md)
 -   [词汇表](./GLOSSARY.md)
--   [图片](./IMAGES.md)
--   [参考](./REFERENCES.md)
+-   [Images](./IMAGES.md)
+-   [References](./REFERENCES.md)
 -   [遥测](./TELEMETRY.md)
 
 **执行摘要**
@@ -20,7 +20,7 @@
 
 ## 200 - 要求
 
-看[README.md](./200/README.md)
+See [README.md](./200/README.md)
 
 ## 300 - 构建我们的应用程序
 
