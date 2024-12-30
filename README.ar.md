@@ -2,13 +2,13 @@
 
 # أبو الهول
 
-> سلوجلاين
+> Slugline
 
 -   [التوثيق](./DOCUMENTATION.md)
 -   [مسرد](./GLOSSARY.md)
 -   [الصور](./IMAGES.md)
 -   [مراجع](./REFERENCES.md)
--   [القياس عن بعد](./TELEMETRY.md)
+-   [Telemetry](./TELEMETRY.md)
 
 **ملخص تنفيذي**
 
@@ -24,7 +24,7 @@
 
 ## 300 – بناء تطبيقنا
 
-يرى[README.md](./300/README.md)
+See [README.md](./300/README.md)
 
 ## 400 - الخاتمة
 
