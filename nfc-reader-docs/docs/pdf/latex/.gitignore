@@ -1,0 +1,13 @@
+*.aux
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.dvi
+*.ps
+*.pdf
+!refman.pdf
