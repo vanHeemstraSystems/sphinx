@@ -10,12 +10,12 @@ all: $(MANUAL_FILE).pdf
 pdf: $(MANUAL_FILE).pdf
 
 $(MANUAL_FILE).pdf: clean $(MANUAL_FILE).tex
-@echo "Generating PDF documentation..."
-$(LATEX_CMD) $(MANUAL_FILE)
-$(MAKEINDEX_CMD) $(MANUAL_FILE).idx
-$(LATEX_CMD) $(MANUAL_FILE)
-$(LATEX_CMD) $(MANUAL_FILE)
-@echo "PDF generation complete."
+  @echo "Generating PDF documentation..."
+  $(LATEX_CMD) $(MANUAL_FILE)
+  $(MAKEINDEX_CMD) $(MANUAL_FILE).idx
+  $(LATEX_CMD) $(MANUAL_FILE)
+  $(LATEX_CMD) $(MANUAL_FILE)
+  @echo "PDF generation complete."
 
 clean:
 @echo "Cleaning up temporary files..."
