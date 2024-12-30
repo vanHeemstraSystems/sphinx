@@ -10,15 +10,11 @@ on:
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
-    defaults:
-      run: 
-        shell: bash
-        working-directory: ./nfc-reader-docs
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
+    
     - name: Install Dependencies
       run: |
         sudo apt-get update
@@ -48,6 +44,12 @@ jobs:
         cd docs
         doxygen Doxyfile
     
+    - name: Fix Makefile Formatting
+      run: |
+        cd docs/pdf/latex
+        # Ensure Makefile uses tabs
+        sed -i 's/^[[:space:]]\+/\t/g' Makefile
+    
     - name: Compile LaTeX to PDF
       run: |
         cd docs/pdf/latex
@@ -66,5 +68,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nfc-reader-documentation
-        path: nfc-reader-docs/docs/pdf/latex/refman.pdf
+        path: docs/pdf/latex/refman.pdf
         retention-days: 30
