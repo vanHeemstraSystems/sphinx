@@ -1,0 +1,18 @@
+% Doxygen custom style definitions
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{doxygen}
+
+% Custom commands for Doxygen elements
+\newcommand{\doxyref}[3]{\textbf{#1} (\textit{#2}\,\pageref{#3})}
+\newenvironment{DoxyDesc}[1]{%
+  \begin{list}{}{%
+    \settowidth{\labelwidth}{20pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\itemsep}{0pt}%
+    \renewcommand{\makelabel}{\entrylabel}%
+  }%
+}{%
+  \end{list}%
+}
+
+% More style definitions...
