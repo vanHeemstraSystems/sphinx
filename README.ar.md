@@ -6,9 +6,9 @@
 
 -   [التوثيق](./DOCUMENTATION.md)
 -   [مسرد](./GLOSSARY.md)
--   [Images](./IMAGES.md)
+-   [الصور](./IMAGES.md)
 -   [مراجع](./REFERENCES.md)
--   [القياس عن بعد](./TELEMETRY.md)
+-   [Telemetry](./TELEMETRY.md)
 
 **ملخص تنفيذي**
 
