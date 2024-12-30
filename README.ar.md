@@ -8,7 +8,7 @@
 -   [مسرد](./GLOSSARY.md)
 -   [الصور](./IMAGES.md)
 -   [مراجع](./REFERENCES.md)
--   [Telemetry](./TELEMETRY.md)
+-   [القياس عن بعد](./TELEMETRY.md)
 
 **ملخص تنفيذي**
 
@@ -26,6 +26,6 @@
 
 يرى[README.md](./300/README.md)
 
-## 400 - الخاتمة
+## 400 - Conclusion
 
 يرى[README.md](./400/README.md)
