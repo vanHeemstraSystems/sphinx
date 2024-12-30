@@ -5,7 +5,7 @@ esfinge
 > línea de bala
 
 -   [Documentación](./DOCUMENTATION.md)
--   [Glosario](./GLOSSARY.md)
+-   [Glossary](./GLOSSARY.md)
 -   [Imágenes](./IMAGES.md)
 -   [Referencias](./REFERENCES.md)
 -   [Telemetria](./TELEMETRY.md)
@@ -20,11 +20,11 @@ Ver[README.md](./100/README.md)
 
 ## 200 - Requisitos
 
-Ver[README.md](./200/README.md)
+See [README.md](./200/README.md)
 
 ## 300 - Construyendo nuestra aplicación
 
-Ver[README.md](./300/README.md)
+See [README.md](./300/README.md)
 
 ## 400 - Conclusión
 
