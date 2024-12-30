@@ -10,9 +10,9 @@
 -   [參考](./REFERENCES.md)
 -   [遙測](./TELEMETRY.md)
 
-**Executive Summary**
+**執行摘要**
 
-文字
+Text
 
 ## 100 - 簡介
 
