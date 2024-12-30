@@ -2,7 +2,7 @@
 
 # गूढ़ व्यक्ति
 
-> स्लगलाइन
+> Slugline
 
 -   [प्रलेखन](./DOCUMENTATION.md)
 -   [शब्दकोष](./GLOSSARY.md)
