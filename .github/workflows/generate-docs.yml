@@ -34,11 +34,12 @@ jobs:
 
     - name: Create Documentation Directory Structure
       run: |
+        cd nfc-reader-docs
         mkdir -p docs
         
     - name: Create Doxyfile
       run: |
-        cd docs
+        cd nfc-reader-docs/docs
         cat > Doxyfile << 'EOL'
         # Doxyfile for NFC Reader Documentation
 
@@ -126,17 +127,35 @@ jobs:
     
     - name: Generate Documentation
       run: |
-        cd docs
+        cd nfc-reader-docs/docs
         doxygen Doxyfile
     
-    - name: Fix Makefile Formatting
+    - name: Create LaTeX Makefile
       run: |
-        cd docs/pdf/latex
-        sed -i 's/^[[:space:]]\+/\t/g' Makefile
+        cd nfc-reader-docs/docs/pdf/latex
+        cat > Makefile << 'EOL'
+        LATEX_CMD=pdflatex
+        MAKEINDEX_CMD=makeindex
+        LATEX_COUNT=8
+        MANUAL_FILE=refman
+
+        all: $(MANUAL_FILE).pdf
+
+        pdf: $(MANUAL_FILE).pdf
+
+        $(MANUAL_FILE).pdf: clean $(MANUAL_FILE).tex
+$(LATEX_CMD) $(MANUAL_FILE)
+$(MAKEINDEX_CMD) $(MANUAL_FILE).idx
+$(LATEX_CMD) $(MANUAL_FILE)
+$(LATEX_CMD) $(MANUAL_FILE)
+
+        clean:
+rm -f *.ps *.dvi *.aux *.toc *.idx *.ind *.ilg *.log *.out *.brf *.blg *.bbl refman.pdf
+        EOL
     
     - name: Compile LaTeX to PDF
       run: |
-        cd docs/pdf/latex
+        cd nfc-reader-docs/docs/pdf/latex
         make
     
     - name: Create Release
@@ -144,7 +163,7 @@ jobs:
       if: github.event_name == 'workflow_dispatch'
       with:
         files: |
-          docs/pdf/latex/refman.pdf
+          nfc-reader-docs/docs/pdf/latex/refman.pdf
         name: Hardware Documentation Release
         tag_name: docs-v${{ github.sha }}
     
@@ -152,5 +171,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nfc-reader-documentation
-        path: docs/pdf/latex/refman.pdf
+        path: nfc-reader-docs/docs/pdf/latex/refman.pdf
         retention-days: 30
